@@ -11,11 +11,12 @@ export ANode, sigm, softmax, gradients, evaluator, BuddyPool, NullPool, instance
 if !haskey(ENV, "SEEP_NO_GPU")
   using CUDAdrv, CUBLAS, SHA
   import CUDArt: device, free, CudaArray, to_host, device_synchronize
-  macro llvm(x) esc(x) end
+  #macro llvm(x) esc(x) end
+  macro llvm(x) end
   macro cuda(x) esc(x) end
-  include("llvm/LLVM.jl")
-  include("llvm/NVVM.jl")
-  import .LLVM: BuilderRef, ValueRef, ModuleRef, TypeRef
+  #include("llvm/LLVM.jl")
+  #include("llvm/NVVM.jl")
+  #import .LLVM: BuilderRef, ValueRef, ModuleRef, TypeRef
   include("cudahacks.jl")
 else
   macro cuda(x) end
