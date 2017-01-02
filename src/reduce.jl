@@ -63,11 +63,11 @@ _sum!{T}(n::Integer, y::CudaArray{T}, x::CudaArray{T}, a::Real=zero(T)) = _sum!(
 
 const cuda_sum_32_float = CuFunction(md, "cuda_sum_32_float")
 _sum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float32}, x::CudaArray{Float32}, incx::Integer, incy::Integer, incz::Integer, a::Real=zero(Float32)) =
-    cudacall(cuda_sum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, Cfloat, Coff_t, Coff_t, Coff_t), nx, x, y, a, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
+    cudacall(cuda_sum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, Cfloat, UInt64, UInt64, UInt64), nx, x, y, a, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
 
 const cuda_sum_32_double = CuFunction(md, "cuda_sum_32_double")
 _sum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float64}, x::CudaArray{Float64}, incx::Integer, incy::Integer, incz::Integer, a::Real=zero(Float64)) =
-    cudacall(cuda_sum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Coff_t, Coff_t, Coff_t), nx, x, y, a, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
+    cudacall(cuda_sum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, UInt64, UInt64, UInt64), nx, x, y, a, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
 end
 
 function add_constant{T}(n::Csize_t, a::Array{T}, b::Array{T})
@@ -116,11 +116,11 @@ _minimum!{T}(n::Integer, y::CudaArray{T}, x::CudaArray{T}) = _minimum!(n, 1, 1, 
 
 const cuda_minimum_32_float = CuFunction(md, "cuda_minimum_32_float")
 _minimum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float32}, x::CudaArray{Float32}, incx::Integer, incy::Integer, incz::Integer) =
-    cudacall(cuda_minimum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, Coff_t, Coff_t, Coff_t), nx, x, y, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
+    cudacall(cuda_minimum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, UInt64, UInt64, UInt64), nx, x, y, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
 
 const cuda_minimum_32_double = CuFunction(md, "cuda_minimum_32_double")
 _minimum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float64}, x::CudaArray{Float64}, incx::Integer, incy::Integer, incz::Integer) =
-    cudacall(cuda_minimum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, Coff_t, Coff_t, Coff_t), nx, x, y, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
+    cudacall(cuda_minimum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, UInt64, UInt64, UInt64), nx, x, y, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
 end
 
 gradient_node(n::ANode{:minimum}, wrt::ANode, b::ANode) = b.*(n .== n.input[1])
@@ -162,11 +162,11 @@ _maximum!{T}(n::Integer, y::CudaArray{T}, x::CudaArray{T}) = _maximum!(n, 1, 1, 
 
 const cuda_maximum_32_float = CuFunction(md, "cuda_maximum_32_float")
 _maximum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float32}, x::CudaArray{Float32}, incx::Integer, incy::Integer, incz::Integer) =
-    cudacall(cuda_maximum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, Coff_t, Coff_t, Coff_t), nx, x, y, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
+    cudacall(cuda_maximum_32_float, (1,ny,nz), 32, (Csize_t, Ptr{Cfloat}, Ptr{Cfloat}, UInt64, UInt64, UInt64), nx, x, y, incx, incy, incz; shmem_bytes=32*4, stream=STREAM[1])
 
 const cuda_maximum_32_double = CuFunction(md, "cuda_maximum_32_double")
 _maximum!(nx::Integer, ny::Integer, nz::Integer, y::CudaArray{Float64}, x::CudaArray{Float64}, incx::Integer, incy::Integer, incz::Integer) =
-    cudacall(cuda_maximum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, Coff_t, Coff_t, Coff_t), nx, x, y, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
+    cudacall(cuda_maximum_32_double, (1,ny,nz), 32, (Csize_t, Ptr{Cdouble}, Ptr{Cdouble}, UInt64, UInt64, UInt64), nx, x, y, incx, incy, incz; shmem_bytes=32*8, stream=STREAM[1])
 end
 
 gradient_node(n::ANode{:maximum}, wrt::ANode, b::ANode) = b.*(n .== n.input[1])

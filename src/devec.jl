@@ -6,12 +6,12 @@ for i in [:.+, :.-, :.*, :./, :.^]
 end
 
 for i in [:+, :*]
-  @eval elementwise(::ANode{$(QuoteNode(symbol("c", i)))}) = true
+  @eval elementwise(::ANode{$(QuoteNode(Symbol("c", i)))}) = true
 end
 
 for i in [:/, :^]
-  @eval elementwise(::ANode{$(QuoteNode(symbol("c", i)))}) = true
-  @eval elementwise(::ANode{$(QuoteNode(symbol(i, "c")))}) = true
+  @eval elementwise(::ANode{$(QuoteNode(Symbol("c", i)))}) = true
+  @eval elementwise(::ANode{$(QuoteNode(Symbol(i, "c")))}) = true
 end
 
 # Create a devectorized kernel that evaluates node n

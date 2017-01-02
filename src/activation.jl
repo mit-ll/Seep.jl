@@ -118,7 +118,7 @@ gradient_node(n::ANode{:exp}, wrt::ANode, b::ANode) = b .* n
 
 elementwise(::ANode{:log}) = true
 # special case: turn log(1+x) into log1p(x)
-Base.log(x::ANode{symbol("c+")}) = arg(x) == 1 ? ANode(:log1p, (x.input[1],), size(x)) : ANode(:log, (x,), size(x))
+Base.log(x::ANode{Symbol("c+")}) = arg(x) == 1 ? ANode(:log1p, (x.input[1],), size(x)) : ANode(:log, (x,), size(x))
 
 _log{T}(n::Integer, a::T, b::T) = _log(Csize_t(n), a, b)
 

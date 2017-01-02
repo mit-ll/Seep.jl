@@ -47,7 +47,7 @@ end
 macro named(arg...)
   if length(arg) == 2 && (isa(arg[1], AbstractString) || isa(arg[1], Symbol))
     name,node = arg
-    return :($(esc(symbol(name))) = name!($(esc(node)), $(string(name))))
+    return :($(esc(Symbol(name))) = name!($(esc(node)), $(string(name))))
   elseif length(arg) == 1 && isa(arg[1], Expr)
     return named_(arg[1])
   else

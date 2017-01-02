@@ -11,7 +11,7 @@ Base.start(i::TemplateIterator) = ones(Int, length(i.type_params))
 Base.done(i::TemplateIterator, s::Vector{Int}) = s[end] > length(i.types[end])
 function Base.next(i::TemplateIterator, s::Vector{Int})
   s = copy(s)
-  item = Dict{Symbol,Symbol}([i.type_params[j] => i.types[j][s[j]] for j in 1:length(s)])
+  item = @compat Dict{Symbol,Symbol}(i.type_params[j] => i.types[j][s[j]] for j in 1:length(s))
   s[1] += 1
   for j in 1:length(s)-1
     if s[j] > length(i.types[j])
