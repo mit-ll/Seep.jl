@@ -1,6 +1,7 @@
 julia 0.4
 Compat
 CUDArt
+CUDAdrv
 CUBLAS
 ArgParse
 HDF5
