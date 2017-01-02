@@ -59,7 +59,7 @@ end
 
 @cuda function do_forward!(n::ANode{:.+}, out::CudaArray, in1, in2)
   copy!(out, in1; stream=STREAM[1].handle)
-  BLAS.axpy!(one(eltype(out)), in2, out)
+  CUBLAS.axpy!(one(eltype(out)), in2, out)
 end
 
 gradient_node(n::ANode{:.+}, wrt::ANode, b::ANode) = b
@@ -71,7 +71,7 @@ end
 
 @cuda function do_forward!(n::ANode{:.-}, out::CudaArray, in1, in2)
   copy!(out, in1; stream=STREAM[1].handle)
-  BLAS.axpy!(-one(eltype(out)), in2, out)
+  CUBLAS.axpy!(-one(eltype(out)), in2, out)
 end
 
 gradient_node(n::ANode{:.-}, wrt::ANode, b::ANode) = wrt == n.input[1] ? b : -b
@@ -118,6 +118,10 @@ function do_forward!(n::ANode{:dot}, out, in1, in2)
   fill!(out, BLAS.dot(length(in1), in1, 1, in2, 1))
 end
 
+@cuda function do_forward!(n::ANode{:dot}, out::CudaArray, in1, in2)
+  fill!(out, CUBLAS.dot(length(in1), in1, 1, in2, 1))
+end
+
 gradient_node(n::ANode{:dot}, wrt::ANode, b::ANode) = b.*(wrt == n.input[1] ? n.input[2] : n.input[1])
 
 function fprop_eltdiv{T}(n::Csize_t, y::Array{T}, a::Array{T}, b::Array{T})
@@ -147,6 +151,11 @@ function do_forward!(n::ANode{Symbol("c+")}, out, in)
   BLAS.axpy!(one(eltype(out)), in, out)
 end
 
+@cuda function do_forward!(n::ANode{Symbol("c+")}, out::CudaArray, in)
+  fill!(out, n.arg)
+  CUBLAS.axpy!(one(eltype(out)), in, out)
+end
+
 gradient_node(n::ANode{Symbol("c+")}, wrt::ANode, b::ANode) = b
 
 import Base.-
@@ -163,9 +172,9 @@ function do_forward!(n::ANode{Symbol("c*")}, out, in)
  BLAS.scal!(length(out), convert(eltype(out), n.arg), out, 1)
 end
 
-@cuda function do_forward!(n::ANode{Symbol("c*")}, out, in)
+@cuda function do_forward!(n::ANode{Symbol("c*")}, out::CudaArray, in)
  copy!(out, in; stream=STREAM[1].handle)
- BLAS.scal!(length(out), convert(eltype(out), n.arg), out, 1)
+ CUBLAS.scal!(length(out), convert(eltype(out), n.arg), out, 1)
 end
 
 gradient_node(n::ANode{Symbol("c*")}, wrt::ANode, b::ANode) = n.arg .* b
