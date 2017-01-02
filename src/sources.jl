@@ -1,0 +1,20 @@
+# © 2016 Massachusetts Institute of Technology.  See LICENSE file for details.
+abstract Instance
+
+include("pool.jl")
+include("graph.jl")
+include("source.jl")
+include("instance.jl")
+include("evaluate.jl")
+include("operators.jl")
+include("matmul.jl")
+include("convolutions.jl")
+include("activation.jl")
+include("reduce.jl")
+include("limits.jl")
+include("mutators.jl")
+include("index.jl")
+include("update.jl")
+include("autodiff.jl")
+include("devec.jl")
+include("snapshots.jl")

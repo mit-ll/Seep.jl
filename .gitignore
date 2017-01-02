@@ -1,0 +1,5 @@
+kernels.ptx
+src/julia_kernels.cu
+/snapshot*
+.ipynb*
+data

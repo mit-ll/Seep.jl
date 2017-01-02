@@ -1,0 +1,10 @@
+Download data from [http://discriminator/leaderboard/ir](http://discriminator/leaderboard/ir)
+
+Store data in `./data` directory.
+
+For regular RNN run `julia rnn.jl`
+
+For a Bidirectional RNN run `julia brnn.jl`
+
+See Jupyter Notebooks for analyzing the results
+
