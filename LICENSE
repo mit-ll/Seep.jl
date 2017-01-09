@@ -1,19 +1,7 @@
-DISTRIBUTION STATEMENT A. Approved for public release: distribution unlimited.
+Copyright 2016 Massachusetts Institute of Technology.
 
-This material is based upon work supported by the Assistant Secretary of
-Defense for Research and Engineering under Air Force Contract No.
-FA8721-05-C-0002 and/or FA8702-15-D-0001. Any opinions, findings, conclusions
-or recommendations expressed in this material are those of the author(s) and do
-not necessarily reflect the views of the Assistant Secretary of Defense for
-Research and Engineering.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-© 2016 Massachusetts Institute of Technology.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-The software/firmware is provided to you on an As-Is basis
-
-Delivered to the U.S. Government with Unlimited Rights, as defined in DFARS
-Part 252.227-7013 or 7014 (Feb 2014). Notwithstanding any copyright notice,
-U.S. Government rights in this work are defined by DFARS 252.227-7013 or DFARS
-252.227-7014 as detailed above. Use of this work other than as specifically
-authorized by the U.S. Government may violate any copyrights that exist in this
-work.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
