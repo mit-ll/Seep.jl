@@ -97,3 +97,15 @@ source tree.
  - [Automatic Differentiation (and Gradient Descent)](doc/autodiff.md)
  - [Memory Pools](doc/pool.md)
  - [Convolution and Pooling](doc/conv2.md)
+ 
+## Disclaimer.   
+DISTRIBUTION STATEMENT A. Approved for public release: distribution unlimited.   
+
+© 2017 MASSACHUSETTS INSTITUTE OF TECHNOLOGY.   
+
+    Subject to FAR 52.227-11 – Patent Rights – Ownership by the Contractor (May 2014).   
+    SPDX-License-Identifier: MIT.   
+ 
+This material is based upon work supported by the Undersecretary of Defense for Research and Engineering under Air Force Contract No. FA8721-05-C-0002. Any opinions, findings, conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of USD(R&E).    
+
+The software/firmware is provided to you on an As-Is basis.   
